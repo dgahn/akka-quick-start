@@ -16,11 +16,15 @@ import akka.stream.Materializer
 import akka.stream.javadsl.Flow
 import io.github.dgahn.akkadocs.user.UserRegistry
 import io.github.dgahn.akkadocs.user.UserRoutes
+import mu.KotlinLogging
 import java.net.InetSocketAddress
 import java.util.concurrent.CompletionStage
 
 
 class QuickstartApp {
+
+    private val log = KotlinLogging.logger {}
+
     fun startHttpServer(
         route: Route,
         system: ActorSystem<*>
@@ -34,13 +38,9 @@ class QuickstartApp {
         futureBinding.whenComplete { binding: ServerBinding?, exception: Throwable? ->
             if (binding != null) {
                 val address: InetSocketAddress = binding.localAddress()
-                system.log().info(
-                    "Server online at http://{}:{}/",
-                    address.hostString,
-                    address.port
-                )
+                log.info { "Server online at http://${address.hostString}:${address.port}" }
             } else {
-                system.log().error("Failed to bind HTTP endpoint, terminating system", exception)
+                log.error{"Failed to bind HTTP endpoint, terminating system : $exception"}
                 system.terminate()
             }
         }

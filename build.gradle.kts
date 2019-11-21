@@ -20,10 +20,10 @@ dependencies {
     implementation("com.typesafe.akka:akka-http_2.13:10.1.10")
 
     implementation("io.github.microutils:kotlin-logging:1.7.8")
-    implementation("org.slf4j:slf4j-api:1.7.29")
+//    implementation("org.slf4j:slf4j-api:1.7.29")
     implementation("org.apache.logging.log4j:log4j-slf4j18-impl:2.12.1")
-    implementation("org.apache.logging.log4j:log4j-api:2.12.1")
-    implementation("org.apache.logging.log4j:log4j-core:2.12.1")
+//    implementation("org.apache.logging.log4j:log4j-api:2.12.1")
+//    implementation("org.apache.logging.log4j:log4j-core:2.12.1")
 }
 
 tasks {
